@@ -1,0 +1,8 @@
+We are using Artificial Intelligence and Computer Vision algorithms for Face Recognition for Digital Onboarding System.
+People want "How can I get a credit card or transfer money without going to the Bank?". We
+are already built Face Verification for Bank's customers. If you don't want to go to
+the Bank, but you want to get a debit card or registration to Bank. Our mission is
+changing the meaning of "Digital Banking". And you'll transfer money with your face
+and ID Card, Driver's License, Passport, and Asan-Imza.
+
+Coming Soon ...
