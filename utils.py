@@ -8,9 +8,13 @@ from tensorflow.python.platform import gfile
 from lib.src.facenet import get_model_filenames
 from lib.src.align.detect_face import detect_face  # face detection
 from lib.src.facenet import load_img
-from scipy.misc import imresize, imsave
+from imageio import imsave
+from cv2 import resize
 from collections import defaultdict
 from flask import flash
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 
 def allowed_file(filename, allowed_set):
@@ -132,7 +136,7 @@ def get_face(img, pnet, rnet, onet, image_size):
             bb[2] = np.minimum(det[2] + margin / 2, img_size[1])
             bb[3] = np.minimum(det[3] + margin / 2, img_size[0])
             cropped = img[bb[1]: bb[3], bb[0]:bb[2], :]
-            face_img = imresize(arr=cropped, size=(input_image_size, input_image_size), mode='RGB')
+            face_img = resize(arr=cropped, size=(input_image_size, input_image_size), mode='RGB')
             return face_img
     else:
         return None
@@ -177,7 +181,7 @@ def get_faces_live(img, pnet, rnet, onet, image_size):
                 bb[2] = np.minimum(det[2] + margin / 2, img_size[1])
                 bb[3] = np.minimum(det[3] + margin / 2, img_size[0])
                 cropped = img[bb[1]:bb[3], bb[0]:bb[2], :]
-                resized = imresize(arr=cropped, size=(input_image_size, input_image_size), mode='RGB')
+                resized = resize(arr=cropped, size=(input_image_size, input_image_size), mode='RGB')
                 faces.append(resized)
                 rects.append([bb[0], bb[1], bb[2], bb[3]])
 

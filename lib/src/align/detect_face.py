@@ -34,6 +34,9 @@ import tensorflow as tf
 import cv2
 import os
 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 def layer(op):
     '''Decorator for composable network layers.'''
 

@@ -3,7 +3,7 @@
 import cv2  # for web camera
 import tensorflow as tf
 import os
-from scipy.misc import imread
+from imageio import imread
 from lib.src.align import detect_face  # for MTCNN face detection
 from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
@@ -12,6 +12,9 @@ from utils import (
     load_model, get_face, get_faces_live, forward_pass, save_embedding, load_embeddings,
     identify_face, allowed_file, remove_file_extension, save_image
 )
+
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
